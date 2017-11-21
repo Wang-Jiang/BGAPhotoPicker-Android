@@ -15,7 +15,6 @@
  *******************************************************************************/
 package cn.bingoogolapple.photopicker.util;
 
-import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
@@ -37,16 +36,15 @@ public class BGABrowserPhotoViewAttacher extends PhotoViewAttacher {
     /**
      * 必须重写此方法，防止其他函数覆盖，导致setTopCrop不成功
      *
-     * @param d - Drawable being displayed
      */
-    @Override
-    protected void updateBaseMatrix(Drawable d) {
-        if (isSetTopCrop) {
-            setTopCrop(d);
-        } else {
-            super.updateBaseMatrix(d);
-        }
-    }
+//    @Override
+//    protected void updateBaseMatrix(Drawable d) {
+//        if (isSetTopCrop) {
+//            setTopCrop(d);
+//        } else {
+//            super.updateBaseMatrix(d);
+//        }
+//    }
 
     public void setIsSetTopCrop(boolean isSetTopCrop) {
         this.isSetTopCrop = isSetTopCrop;
@@ -55,7 +53,7 @@ public class BGABrowserPhotoViewAttacher extends PhotoViewAttacher {
     public void setUpdateBaseMatrix() {
         ImageView view = getImageView();
         if (view == null) return;
-        updateBaseMatrix(view.getDrawable());
+//        updateBaseMatrix(view.getDrawable());
     }
 
     private void setTopCrop(Drawable d) {
@@ -63,19 +61,19 @@ public class BGABrowserPhotoViewAttacher extends PhotoViewAttacher {
         if (null == imageView || null == d) {
             return;
         }
-        final float viewWidth = getImageViewWidth(imageView);
-        final float viewHeight = getImageViewHeight(imageView);
-        final int drawableWidth = d.getIntrinsicWidth();
-        final int drawableHeight = d.getIntrinsicHeight();
-
-        Matrix matrix = new Matrix();
-
-        final float widthScale = viewWidth / drawableWidth;
-        final float heightScale = viewHeight / drawableHeight;
-        float scale = Math.max(widthScale, heightScale);
-        matrix.postScale(scale, scale);
-        matrix.postTranslate(0, 0);
-        updateBaseMatrix(matrix);
+//        final float viewWidth = getImageViewWidth(imageView);
+//        final float viewHeight = getImageViewHeight(imageView);
+//        final int drawableWidth = d.getIntrinsicWidth();
+//        final int drawableHeight = d.getIntrinsicHeight();
+//
+//        Matrix matrix = new Matrix();
+//
+//        final float widthScale = viewWidth / drawableWidth;
+//        final float heightScale = viewHeight / drawableHeight;
+//        float scale = Math.max(widthScale, heightScale);
+//        matrix.postScale(scale, scale);
+//        matrix.postTranslate(0, 0);
+//        updateBaseMatrix(matrix);
     }
 
 }
